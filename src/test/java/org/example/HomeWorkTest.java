@@ -1,7 +1,10 @@
 package org.example;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -19,9 +22,10 @@ class HomeWorkTest {
     void managerFabric() {
     }
 
-    @Test
-    void check() {
-        List<Integer> expectedQueue = generateQueue(1, 4);
+    @ParameterizedTest
+    @ValueSource(ints = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 99, 100, 101, 1000, 200000, 500001})
+    void check(int len) {
+        List<Integer> expectedQueue = generateQueue(len);
         List<String> pairs = generatePairs(expectedQueue);
         assertEquals(expectedQueue, homeWork.check(pairs));
     }
@@ -38,9 +42,10 @@ class HomeWorkTest {
         return pairs;
     }
 
-    private List<Integer> generateQueue(int seed, int length) {
-        return new Random(seed)
+    private List<Integer> generateQueue(int length) {
+        return new Random(OffsetDateTime.now().getNano())
                 .ints(1, length * 100)
+                .distinct()
                 .limit(length)
                 .boxed()
                 .collect(Collectors.toList());
