@@ -14,8 +14,8 @@ public class HomeWork {
      * Требуется реализовать интерфейс TicketManager в соответствии с JavaDoc описанием.
      * Реализации очередей из стандартной библиотеки не используем.
      */
-    public TicketManager managerFabric() {
-        return null;
+    public TicketManager managerFabric(int capacity) {
+        return new TicketManagerImpl(new Ticket[capacity]);
     }
 
 

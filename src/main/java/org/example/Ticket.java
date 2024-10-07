@@ -29,4 +29,13 @@ public class Ticket {
     public Ticket(String type) {
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "id=" + id +
+                ", type='" + type + '\'' +
+                ", registerTime=" + registerTime +
+                '}';
+    }
 }

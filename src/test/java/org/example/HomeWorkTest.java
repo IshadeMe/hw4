@@ -13,6 +13,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class HomeWorkTest {
 
@@ -20,6 +21,7 @@ class HomeWorkTest {
 
     @Test
     void managerFabric() {
+        assertNotNull(homeWork.managerFabric(1));
     }
 
     @ParameterizedTest
